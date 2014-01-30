@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+load 'puppet_pal/cli.rb'
+PuppetPal::Cli.new.run
