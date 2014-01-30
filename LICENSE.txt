@@ -1,4 +1,4 @@
-Copyright (c) 2013 Michael Owings
+Copyright (c) 2014 Turbosquid, Inc.
 
 MIT License
 
