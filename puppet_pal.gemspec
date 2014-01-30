@@ -10,11 +10,11 @@ Gem::Specification.new do |spec|
   spec.email         = ["mowings@turbosquid.com"]
   spec.description   = %q{A simpler, faster version of librarian-puppet -- pulls specified modules from soure control}
   spec.summary       = %q{Puppet Pal!}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/turbosquid/puppet_pal"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f|  puts f; File.basename(f) }
+  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
