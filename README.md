@@ -34,7 +34,7 @@ specified, then the module is pulled from puppetforge (via a `puppet
 module install` call). 
 
 Otherwise, you may pass the `:git` option to specify a git repo, as well as a `:path`
-option to specify a particular path within that repo.
+and/or `:branch` option to specify a particular path within that repo.
 
 ### forge
 For backward compatibility -- does nothing
@@ -52,7 +52,8 @@ For backward compatibility -- does nothing
       :path=> "modules/base_packages"
     mod 'solr',
       :git => puppet_common_git,
-      :path=> "modules/solr"
+      :path=> "modules/solr",
+      :branch => "develop"
     mod 'mysql',
       :git => puppet_common_git,
       :path=> "modules/mysql"
