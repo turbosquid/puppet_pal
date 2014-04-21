@@ -39,7 +39,9 @@ module PuppetPal
       working_dir
     end
 
-    def copy_module(name, source_path)
+    def copy_module(name, source_path, branch='master')
+      success = system("cd #{source_path} && git checkout #{branch}")
+      raise "git checkout failed" unless success
       target = File.join(@module_dir,name)
       FileUtils.rm_rf(target)
       FileUtils.cp_r(source_path, target, preserve: true)
@@ -59,9 +61,9 @@ module PuppetPal
     def mod(name, options={})
       puts "Processing module: #{name}"
       if options[:git]
-        working_dir = pull_repo(options[:git])
+        working_dir = pull_repo(options[:git], :git )
         path = options[:path] || ""
-        copy_module(name, File.join(working_dir, path))
+        copy_module(name, File.join(working_dir, path), options[:branch] || 'master')
       else # Assume we are pulling from puppet forge
         pull_from_puppetforge(name)
       end
