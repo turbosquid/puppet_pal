@@ -40,8 +40,11 @@ module PuppetPal
     end
 
     def copy_module(name, source_path, branch='master')
-      success = system("cd #{source_path} && git checkout #{branch}")
-      raise "git checkout failed" unless success
+      current_branch = `cd #{source_path} && git symbolic-ref --short HEAD`.strip
+      if current_branch != branch
+        success = system("cd #{source_path} && git checkout #{branch}")
+        raise "git checkout failed" unless success
+      end
       target = File.join(@module_dir,name)
       FileUtils.rm_rf(target)
       FileUtils.cp_r(source_path, target, preserve: true)
